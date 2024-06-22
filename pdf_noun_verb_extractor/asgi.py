@@ -1,5 +1,5 @@
 """
-ASGI config for pdf_extractor project.
+ASGI config for pdf_noun_verb_extractor project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pdf_extractor.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pdf_noun_verb_extractor.settings')
 
 application = get_asgi_application()
