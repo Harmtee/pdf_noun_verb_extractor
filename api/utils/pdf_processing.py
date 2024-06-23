@@ -1,3 +1,4 @@
+import os
 import spacy
 import fitz
 
@@ -8,6 +9,8 @@ def extract_text_from_pdf(pdf_file):
     text = ""
     for page in doc:
         text += page.get_text()
+    doc.close()
+    os.remove(pdf_file)
     return text
 
 def extract_nouns_verbs(text):
