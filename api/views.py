@@ -24,9 +24,12 @@ class PDFView(APIView):
                 for chunk in pdf_file.chunks():
                     destination.write(chunk)
 
-            text = extract_text_from_pdf(filename)
-            nouns, verbs = extract_nouns_verbs(text)
-
+            try:
+                text = extract_text_from_pdf(filename)
+                nouns, verbs = extract_nouns_verbs(text)
+            except Exception as e:
+                return Response({"error": "Something went wrong", "details": f"{e}"}, status=status.HTTP_400_BAD_REQUEST)
+            
             try:
                 file_serializer.save(
                     nouns=nouns,
