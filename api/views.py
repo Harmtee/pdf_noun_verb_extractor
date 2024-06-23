@@ -21,6 +21,9 @@ class PDFView(APIView):
         if file_serializer.is_valid():
             if 'pdf_file' not in request.data:
                 return Response({"error": "No pdf file provided"}, status=status.HTTP_400_BAD_REQUEST)
+            if not request.data["pdf_file"].name.endswith(".pdf"):
+                return Response({"error": "File must be a PDF"}, status=status.HTTP_400_BAD_REQUEST)
+            
             pdf_file = request.data["pdf_file"]
             pdf_file = request.data["pdf_file"]
             
@@ -64,3 +67,6 @@ class PDFView(APIView):
 
 class UploadView(generic.TemplateView):
     template_name = "upload.html"
+    
+class HomeView(generic.TemplateView):
+    template_name = "home.html"
