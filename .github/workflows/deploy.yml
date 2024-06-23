@@ -41,3 +41,17 @@ jobs:
 
     - name: Deploy to Heroku
       run: git push heroku main --force
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+
+    - name: Set Heroku environment variables
+      run: |
+        heroku config:set DEBUG=$DEBUG CONNECTION_STRING=$CONNECTION_STRING DB_NAME=$DB_NAME DJANGO_ENV=$DJANGO_ENV DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY HEROKU_API_KEY=$HEROKU_API_KEY PRODUCTION_ALLOWED_HOSTS=$PRODUCTION_ALLOWED_HOSTS -a pdf-noun-verb-extractor
+      env:
+        DEBUG: ${{ secrets.DEBUG }}
+        CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+        DB_NAME: ${{ secrets.DB_NAME }}
+        DJANGO_ENV: ${{ secrets.DJANGO_ENV }}
+        DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        PRODUCTION_ALLOWED_HOSTS: ${{ secrets.PRODUCTION_ALLOWED_HOSTS }}

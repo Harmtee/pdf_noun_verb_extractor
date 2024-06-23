@@ -29,7 +29,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='unsafe-default-secret-key')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Set the allowed hosts using a CSV string and convert it to a list
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost', cast=Csv())
+ALLOWED_HOSTS = ['*']
 
 
 # Detect the environment type and load appropriate settings

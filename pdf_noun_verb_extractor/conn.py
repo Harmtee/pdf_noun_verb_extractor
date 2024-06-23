@@ -1,7 +1,7 @@
 # settings.py
 
 from mongoengine import connect
-from decouple import config, Csv
+from decouple import config
 
 ENVIRONMENT = config('DJANGO_ENV', default='development')
 
@@ -13,7 +13,7 @@ MONGODB_SETTINGS = {
 
 if ENVIRONMENT == 'production':
     # Production-specific settings
-    MONGODB_SETTINGS['host'] = config('PRODUCTION_CONNECTION_STRING', default='mongodb://localhost:27017')
+    MONGODB_SETTINGS['host'] = config('CONNECTION_STRING', default='mongodb://localhost:27017')
 
 elif ENVIRONMENT == 'testing':
     # Testing-specific settings

@@ -18,6 +18,9 @@ class PDFView(APIView):
     def post(self, request, *args, **kwargs):
         file_serializer = PDFSerializer(data=request.data)
         if file_serializer.is_valid():
+            if 'pdf_file' not in request.data:
+                return Response({"error": "No pdf file provided"}, status=status.HTTP_400_BAD_REQUEST)
+            pdf_file = request.data["pdf_file"]
             pdf_file = request.data["pdf_file"]
             filename = f'uploads/{uuid.uuid4()}.{pdf_file.name.split(".")[-1]}'
             with open(filename, "wb+") as destination:
