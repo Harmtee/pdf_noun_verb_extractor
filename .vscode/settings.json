@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///c%3A/learning/pdf_noun_verb_extractor/.github/workflows/deploy.yml"
+    }
+}
