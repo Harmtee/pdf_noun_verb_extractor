@@ -1,3 +1,4 @@
+import os
 from rest_framework.exceptions import ValidationError
 from mongoengine.errors import NotUniqueError
 from rest_framework.views import APIView
@@ -22,6 +23,12 @@ class PDFView(APIView):
                 return Response({"error": "No pdf file provided"}, status=status.HTTP_400_BAD_REQUEST)
             pdf_file = request.data["pdf_file"]
             pdf_file = request.data["pdf_file"]
+            
+            # Create uploads folder if it does not exist
+            uploads_dir = 'uploads'
+            if not os.path.exists(uploads_dir):
+                os.makedirs(uploads_dir)
+
             filename = f'uploads/{uuid.uuid4()}.{pdf_file.name.split(".")[-1]}'
             with open(filename, "wb+") as destination:
                 for chunk in pdf_file.chunks():
