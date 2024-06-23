@@ -42,7 +42,7 @@ if ENVIRONMENT == 'production':
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     DEBUG = False
-    ALLOWED_HOSTS = config('PRODUCTION_ALLOWED_HOSTS', default='', cast=Csv())
+    ALLOWED_HOSTS = ['*']
 
 elif ENVIRONMENT == 'testing':
     # Testing-specific settings
