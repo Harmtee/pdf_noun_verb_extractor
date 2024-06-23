@@ -41,7 +41,6 @@ if ENVIRONMENT == 'production':
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
-    DEBUG = False
     ALLOWED_HOSTS = ['*']
 
 elif ENVIRONMENT == 'testing':
